@@ -1,5 +1,6 @@
 package game;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,12 +12,8 @@ public class BlackJack {
     private String[] suits = {"Spades","Clubs","Hearts","Diamonds"};
     private String[] values = {"Ace", "2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
     private int deckSize;
-
-    public List<String> getDeck() {
-        return Deck;
-    }
-
     private List<String> Deck = new ArrayList<String>();
+    private List<String> currentCards = new ArrayList<String>();
 
     public BlackJack() {
         for (String suit: suits) {
@@ -25,12 +22,25 @@ public class BlackJack {
             }
         }
     }
-    public String getRandomCard(int cards){
+    public List<String> getRandomCard(int deckSize, int cardsToDeal){
+
         Random cardNum = new Random();
-        int cardSpot = cardNum.nextInt(cards);
-        String nextCard = Deck.get(cardSpot);
-        Deck.remove(cardSpot);
-        System.out.println(nextCard);
-        return nextCard;
+        for (int i = 0; i < cardsToDeal; i++) {
+            int cardSpot = cardNum.nextInt(deckSize);
+            String nextCard = Deck.get(cardSpot);
+            currentCards.add(nextCard);
+            Deck.remove(cardSpot);
+            System.out.println(nextCard);
+        }return currentCards;
+    }
+
+
+
+    //GETTERS
+    public List<String> getDeck() {
+        return Deck;
+    }
+    public List<String> getCurrentCards() {
+        return currentCards;
     }
 }

@@ -12,26 +12,28 @@ import static org.junit.Assert.*;
  */
 public class BlackJackTest {
     @Test
-    public void runBlackJack_createCardDeck_1(){
+    public void runBlackJack_createCardDeck_1() {
         BlackJack testBlackJack = new BlackJack();
         testBlackJack.getDeck();
         assertEquals(52, testBlackJack.getDeck().size());
     }
+
     @Test
     public void runBlackJack_getRandomCard_2() {
         BlackJack testBlackJack = new BlackJack();
         boolean expectedOutput = false;
-        String nextCard = testBlackJack.getRandomCard(52);
-        if(testBlackJack.getDeck().contains(nextCard)){
+        List<String> nextCard = testBlackJack.getRandomCard(52, 1);
+        if (testBlackJack.getDeck().contains(nextCard)) {
             expectedOutput = true;
             System.out.println(nextCard);
         }
         assertFalse(expectedOutput);
     }
+
     @Test
-    public void runBlackJack_changeDeckSize_1(){
+    public void runBlackJack_changeDeckSize_1() {
         BlackJack testBlackJack = new BlackJack();
-        testBlackJack.getRandomCard(52);
+        testBlackJack.getRandomCard(52, 2);
         assertEquals(51, testBlackJack.getDeck().size());
     }
 }
