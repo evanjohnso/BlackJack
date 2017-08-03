@@ -16,11 +16,20 @@ public class BlackJack {
     private int handTotal = 0;
 
     public int getHandTotal() {
+        int aces = 0;
         for (int i = 0; i < currentCards.size(); i++) {
             Character pointer = currentCards.get(i).charAt(0);
+            if(cardValues.get(pointer) == 1){
+                handTotal += 11;
+                aces++;
+            }else{
             handTotal += cardValues.get(pointer);
+            }
+        } while(handTotal > 21 && aces>0){
+            handTotal -=10;
+            aces --;
         }
-        return handTotal;
+            return handTotal;
     }
 
     public BlackJack() {
