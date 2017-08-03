@@ -11,7 +11,7 @@ public class BlackJackTest {
     @Test
     public void runBlackJack_createCardDeck_1(){
         BlackJack testBlackJack = new BlackJack();
-        assertEquals(false, testBlackJack instanceof BlackJack);
+        assertEquals(true, testBlackJack instanceof BlackJack);
     }
 
 
