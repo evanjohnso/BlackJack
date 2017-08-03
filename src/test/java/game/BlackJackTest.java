@@ -12,7 +12,7 @@ public class BlackJackTest {
     public void runBlackJack_createCardDeck_1(){
         BlackJack testBlackJack = new BlackJack();
         testBlackJack.getDeck();
-        assertEquals(true, testBlackJack.getDeck());
+        assertEquals(52, testBlackJack.getDeck().size());
     }
 
 
