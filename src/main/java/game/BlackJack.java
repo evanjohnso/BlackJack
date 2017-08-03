@@ -10,6 +10,7 @@ import java.util.Random;
 public class BlackJack {
     private String[] suits = {"Spades","Clubs","Hearts","Diamonds"};
     private String[] values = {"Ace", "2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
+    private int deckSize;
 
     public List<String> getDeck() {
         return Deck;
@@ -27,9 +28,9 @@ public class BlackJack {
     public String getRandomCard(int cards){
         Random cardNum = new Random();
         int cardSpot = cardNum.nextInt(cards);
-
         String nextCard = Deck.get(cardSpot);
-
+        Deck.remove(cardSpot);
+        System.out.println(nextCard);
         return nextCard;
     }
 }

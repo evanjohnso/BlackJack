@@ -26,9 +26,12 @@ public class BlackJackTest {
             expectedOutput = true;
             System.out.println(nextCard);
         }
-        assertTrue(expectedOutput);
-
+        assertFalse(expectedOutput);
     }
-
-
+    @Test
+    public void runBlackJack_changeDeckSize_1(){
+        BlackJack testBlackJack = new BlackJack();
+        testBlackJack.getRandomCard(52);
+        assertEquals(51, testBlackJack.getDeck().size());
+    }
 }
