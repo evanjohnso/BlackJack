@@ -35,7 +35,6 @@ public class BlackJack {
     }
 
 
-
     //GETTERS
     public List<String> getDeck() {
         return Deck;

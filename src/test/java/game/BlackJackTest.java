@@ -23,10 +23,8 @@ public class BlackJackTest {
         BlackJack testBlackJack = new BlackJack();
         boolean expectedOutput = false;
         List<String> nextCard = testBlackJack.getRandomCard(52, 1);
-        if (testBlackJack.getDeck().contains(nextCard)) {
+        if (testBlackJack.getDeck().contains(nextCard))
             expectedOutput = true;
-            System.out.println(nextCard);
-        }
         assertFalse(expectedOutput);
     }
 
@@ -34,6 +32,12 @@ public class BlackJackTest {
     public void runBlackJack_changeDeckSize_1() {
         BlackJack testBlackJack = new BlackJack();
         testBlackJack.getRandomCard(52, 2);
-        assertEquals(51, testBlackJack.getDeck().size());
+        assertEquals(50, testBlackJack.getDeck().size());
+    }
+    @Test
+    public void runBlackJack_currentHand_1() {
+        BlackJack testBlackJack = new BlackJack();
+        testBlackJack.getRandomCard(52, 2);
+        assertEquals(2, testBlackJack.getCurrentCards().size());
     }
 }
