@@ -26,10 +26,13 @@ public class App {
             Card dealerCard2 = newGame.getRandomCard(1);
             Card playerCard = newGame.getRandomCard(1);
             Card playerCard2 = newGame.getRandomCard(1);
+
             Players Dealer = new Players(dealerCard);
             Dealer.setCurrentCards(dealerCard2);
+
             Players User = new Players(playerCard);
             User.setCurrentCards(playerCard2);
+
 
             System.out.println("Your hand: " + User.getCurrentCards() );
             System.out.println("Total: " + User.getHandTotal());
