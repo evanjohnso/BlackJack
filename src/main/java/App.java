@@ -33,9 +33,12 @@ public class App {
 
             System.out.println("Your hand: " + User.getCurrentCards() );
             System.out.println("Total: " + User.getHandTotal());
+            System.out.println("################################");
+            System.out.println("Dealer: " + dealerCard2);
+            System.out.println("################################");
 
             while (gambling) {
-                System.out.println("Want to hit this shit son?");
+                System.out.println("Want to hit this shit, son?");
                 String input = bufferedReader.readLine().toLowerCase();
                 if (input.equals("y")) {
                     User.setCurrentCards( newGame.getRandomCard(1) );
@@ -52,11 +55,22 @@ public class App {
                     } else{
                         System.out.println("I'd hit again if I were you...who knows what lady luck'll bring!");
                     }
-                } else if(input.equals("n")){
-                    System.out.println("Clearly you shouldn't be playing, Buckaroo! YA got no ♥...probably");
+                } else if(input.equals("n")) {
+                    do {
+                        Dealer.setCurrentCards( newGame.getRandomCard(1) );
+                    } while (Dealer.getHandTotal() < 17);
                     System.out.println("Your hand: " + User.getCurrentCards() );
                     System.out.println("Total: " + User.getHandTotal());
-                    gambling = false;
+                    System.out.println("################################");
+                    System.out.println("Dealers hand: " + Dealer.getCurrentCards() );
+                    System.out.println("Dealer total: " + Dealer.getHandTotal());
+                    boolean winner = Dealer.getHandTotal() < User.getHandTotal();
+                    if (winner && (Dealer.getHandTotal()<=21)) {
+                        System.out.println("YOU WINNNNNN!!!");
+                    } else {
+                        System.out.println("Clearly you shouldn't be playing, Buckaroo! YA got no ♥...probably...cuz ya lost");
+                    }
+                    gambling =false;
                 }
             }
         }

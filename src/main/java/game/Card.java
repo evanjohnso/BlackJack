@@ -22,6 +22,10 @@ public class Card {
         return (number +" of "+suit);
 
     }
+//
+//    public void toStrings() {
+//        System.out.println( (number +" of " + suit) );
+//    }
 }
 
 
