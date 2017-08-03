@@ -7,72 +7,43 @@ import java.util.*;
  * Created by Guest on 8/3/17.
  */
 public class BlackJack {
-    private String[] suits = {"Spades","Clubs","Hearts","Diamonds"};
+    private String[] suits = {"♠","♣","♥","♦"};
     private String[] values = {"Ace", "2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
-    private int cardsLeft;
-    private List<String> deck = new ArrayList<String>();
-    private List<String> currentCards = new ArrayList<String>();
-    private Map<Character, Integer> cardValues = new HashMap<Character, Integer>();
-    private int handTotal = 0;
+    private Integer[] scoreValue = {1,2,3,4,5,6,7,8,9,10,10,10,10};
 
-    public int getHandTotal() {
-        int aces = 0;
-        for (int i = 0; i < currentCards.size(); i++) {
-            Character pointer = currentCards.get(i).charAt(0);
-            if(cardValues.get(pointer) == 1){
-                handTotal += 11;
-                aces++;
-            }else{
-            handTotal += cardValues.get(pointer);
-            }
-        } while(handTotal > 21 && aces>0){
-            handTotal -=10;
-            aces --;
-        }
-            return handTotal;
-    }
+    private int cardsLeft;
+    private List<Card> deck = new ArrayList<Card>();
 
     public BlackJack() {
-        for (String suit: suits) {
-            for (String value: values) {
-                deck.add(value + " of " + suit);
+        for (int i = 0; i < suits.length; i++) {
+            for (int j = 0; j < values.length; j ++) {
+                deck.add( new Card(values[j], suits[i], scoreValue[j]) );
             }
         }
         cardsLeft = deck.size();
-        for (int i = 0; i < 10; i ++) {
-            Character letter = values[i].charAt(0);
-            cardValues.put(letter, (1 + i));
-        }
-        for (int j = 9; j < 13; j++) {
-            Character letter = values[j].charAt(0);
-            cardValues.put(letter, 10);
-        }
     }
-    public List<String> getRandomCard(int cardsToDeal){
 
+
+
+    public Card getRandomCard(int cardsToDeal) {
         Random cardNum = new Random();
+        Card nextCard = null;
         for (int i = 0; i < cardsToDeal; i++) {
-            int cardSpot = cardNum.nextInt(cardsLeft-1);
-            String nextCard = deck.get(cardSpot);
-            currentCards.add(nextCard);
-            deck.remove(cardSpot);
+            int cardSpot = cardNum.nextInt(cardsLeft - 1);
+            nextCard = deck.get(cardSpot);
 
+            deck.remove(cardSpot);
         }
         cardsLeft = cardsLeft - cardsToDeal;
-        return currentCards;
+        return nextCard;
     }
 
     //GETTERS
-    public List<String> getDeck() {
+    public List<Card> getDeck() {
         return deck;
-    }
-    public List<String> getCurrentCards() {
-        return currentCards;
     }
     public int getCardsLeft() {
         return cardsLeft;
     }
-    public Map<Character, Integer> getCardValues() {
-        return cardValues;
-    }
+
 }
