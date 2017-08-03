@@ -49,7 +49,13 @@ public class BlackJackTest {
         @Test
         public void runBlackJack_assignValues_1 () {
             BlackJack testBlackJack = new BlackJack();
-            int output = testBlackJack.getCardValues().get("4");
-            assertEquals(8, output);
+            int output = testBlackJack.getCardValues().get('4');
+            assertEquals(4, output);
+        }
+        @Test
+        public void runBlackJack_cardTotalAsInteger_1 () {
+            BlackJack testBlackJack = new BlackJack();
+            testBlackJack.getRandomCard(2);
+            assertEquals(4, testBlackJack.getHandTotal());
+        }
     }
-}

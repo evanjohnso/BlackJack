@@ -12,9 +12,16 @@ public class BlackJack {
     private int cardsLeft;
     private List<String> deck = new ArrayList<String>();
     private List<String> currentCards = new ArrayList<String>();
-    private Map<String, Integer> cardValues = new HashMap<String, Integer>();
+    private Map<Character, Integer> cardValues = new HashMap<Character, Integer>();
+    private int handTotal = 0;
 
-
+    public int getHandTotal() {
+        for (int i = 0; i < currentCards.size(); i++) {
+            Character pointer = currentCards.get(i).charAt(0);
+            handTotal += cardValues.get(pointer);
+        }
+        return handTotal;
+    }
 
     public BlackJack() {
         for (String suit: suits) {
@@ -24,10 +31,12 @@ public class BlackJack {
         }
         cardsLeft = deck.size();
         for (int i = 0; i < 10; i ++) {
-            cardValues.put(values[i] , (1 + i) );
+            Character letter = values[i].charAt(0);
+            cardValues.put(letter, (1 + i));
         }
         for (int j = 9; j < 13; j++) {
-            cardValues.put(values[j], 10);
+            Character letter = values[j].charAt(0);
+            cardValues.put(letter, 10);
         }
     }
     public List<String> getRandomCard(int cardsToDeal){
@@ -54,7 +63,7 @@ public class BlackJack {
     public int getCardsLeft() {
         return cardsLeft;
     }
-    public Map<String, Integer> getCardValues() {
+    public Map<Character, Integer> getCardValues() {
         return cardValues;
     }
 }
