@@ -9,6 +9,7 @@ import java.util.List;
 public class Players {
     private List<Card> currentCards = new ArrayList<Card>();
     private int handTotal = 0;
+    private long bankAccount = 0;
 
     public Players (Card newCard) {
         this.currentCards.add(newCard);
@@ -17,6 +18,12 @@ public class Players {
     //Setters
     public void setCurrentCards(Card currentCards) {
         this.currentCards.add(currentCards);
+    }
+    public void setHandTotal(int handTotal) {
+        this.handTotal = handTotal;
+    }
+    public void setBankAccount(int bankAccount) {
+        this.bankAccount = bankAccount;
     }
     //Getters
     public int getHandTotal() {
@@ -39,5 +46,8 @@ public class Players {
     }
     public String getCurrentCards() {
         return currentCards.toString();
+    }
+    public long getBankAccount() {
+        return bankAccount;
     }
 }
