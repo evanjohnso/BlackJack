@@ -18,40 +18,40 @@ public class App {
 
         try {
 
-            boolean newBJGame= true;
+            boolean blackjack= true;
             String response = bufferedReader.readLine();
             System.out.println("Buy in is 500, feel free to throw down what you will. How much?");
             long startCash = Long.parseLong(bufferedReader.readLine());
             if (startCash > 10001) {
                 System.out.println("We don't have that kind of cash on hand. Keep in your pants");
-                newBJGame = false;
+                blackjack = false;
             }
-            while (newBJGame) {
+            while (blackjack) {
                 if(response == "yes"){
-                    newBJGame =true;
+                    blackjack =true;
                 }else if(response == "no"){
-                    newBJGame = false;
+                    blackjack = false;
                 }
                 BlackJack newGame = new BlackJack();
-                System.out.println("Here are your first two cards");
+                System.out.println("Here are your first two cards\n");
                 boolean gambling = true;
-                Card dealerCard = newGame.getRandomCard(1);
-                Card dealerCard2 = newGame.getRandomCard(1);
-                Card playerCard = newGame.getRandomCard(1);
-                Card playerCard2 = newGame.getRandomCard(1);
-
+                //Dealer Gets two
                 Players Dealer = new Players(dealerCard);
                 Dealer.setCurrentCards(dealerCard2);
-
+                Card dealerCard = newGame.getRandomCard(1);
+                Card dealerCard2 = newGame.getRandomCard(1);
+                //Player Gets two
+                Card playerCard = newGame.getRandomCard(1);
+                Card playerCard2 = newGame.getRandomCard(1);
                 Players User = new Players(playerCard);
                 User.setCurrentCards(playerCard2);
-
-                System.out.println("################################");
+                //Display on terminal
+                System.out.println("################################\n");
                 System.out.println("Your hand: " + User.getCurrentCards());
                 System.out.println("Total: " + User.getHandTotal());
-                System.out.println("################################");
-                System.out.println("Dealer: " + dealerCard2 + "," + "\t\uD83C\uDCC3\t\uD83C\uDCC3\t\uD83C\uDCC3\t\uD83C\uDCC3 ##");
-                System.out.println("################################");
+                System.out.println("################################\n");
+                System.out.println("Dealer: " + dealerCard2 + "," + "\t\uD83C\uDCC3\t\uD83C\uDCC3\t\uD83C\uDCC3\t\uD83C\uDCC3 ##\n");
+                System.out.println("################################\n");
 
                 while (gambling) {
                     System.out.println("Want to hit this shit, son?");
@@ -69,8 +69,6 @@ public class App {
                             System.out.println("Wahooo You've won! BLACKJACK!!!! Take me somewhere nice! It's cold in here!");
 
                             gambling = false;
-                        } else {
-                            System.out.println("I'd hit again if I were you...who knows what lady luck'll bring!");
                         }
                     } else if (input.equals("n")) {
                         while (Dealer.getHandTotal() < 17) {
@@ -82,7 +80,7 @@ public class App {
                         System.out.println("Dealers hand: " + Dealer.getCurrentCards());
                         System.out.println("Dealer total: " + Dealer.getHandTotal());
                         boolean winner = Dealer.getHandTotal() < User.getHandTotal();
-                        if (winner && (Dealer.getHandTotal() <= 21)) {
+                        if (winner || (Dealer.getHandTotal() >= 21)) {
                             System.out.println("YOU WINNNNNN!!!");
                         } else {
                             System.out.println("Clearly you shouldn't be playing, Buckaroo! YA got no ♥...probably...cuz ya lost");
