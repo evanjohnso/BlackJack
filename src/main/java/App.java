@@ -28,61 +28,62 @@ public class App {
                 String response = bufferedReader.readLine();
                 if ("yes".equals(response)) {
                     //Create new deck with fresh hands
-                    BlackJack newGame = new BlackJack();
+                    BlackJack casino = new BlackJack();
                     //Player Gets two
-                    Card playerCard = newGame.getRandomCard(1);
-                    Card playerCard2 = newGame.getRandomCard(1);
-                    Players User = new Players(playerCard);
-                    User.setCurrentCards(playerCard2);
+                    Card playerCard = casino.getRandomCard();
+                    Card playerCard2 = casino.getRandomCard();
+                    Players player1 = new Players(playerCard);
+                    player1.setCurrentCards(playerCard2);
                     System.out.println("################################");
-                    System.out.println("Your hand: " + User.getCurrentCards());
-                    System.out.println("Total: " + User.getHandTotal());
-                    //Dealer Gets two
-                    Card dealerCard = newGame.getRandomCard(1);
-                    Card dealerCard2 = newGame.getRandomCard(1);
-                    Players Dealer = new Players(dealerCard);
-                    Dealer.setCurrentCards(dealerCard2);
+                    System.out.println("Your hand: " + player1.getCurrentCards());
+                    System.out.println("Total: " + player1.getHandTotal());
+                    //dealer Gets two
+                    Card dealerCard = casino.getRandomCard();
+                    Card dealerCard2 = casino.getRandomCard();
+                    Players dealer = new Players(dealerCard);
+                    dealer.setCurrentCards(dealerCard2);
                     System.out.println("\n################################\n");
-                    System.out.println("Dealer: " + dealerCard2 + ", " + "│░░░░░░░░░│");
+                    System.out.println("dealer: " + dealerCard2 + ", " + "│░░░░░░░░░│");
                     System.out.println("################################\n");
-                    //If player is dealt blackjack, don't allow betting options..offer new deal
-                    if (User.getHandTotal() == 21) {
-                        System.out.println("BLACKJACK!!!! ");
+                    //If player is dealt casino, don't allow betting options..offer new deal
+                    if (player1.getHandTotal() == 21) {
+                        System.out.println("casino!!!! ");
                         playing = false;
                     }
                     boolean gambling = true;
-                    //If user not dealt BlackJack, start gambling
+                    //If player1 not dealt casino, start gambling
                     if (playing) {
                         do {
                             System.out.println("Hit?");
+                            System.out.println("cards left: "+ casino.getCardsLeft());
                             String input = bufferedReader.readLine().toLowerCase();
                             if (input.equals("yes")) {
-                                User.setCurrentCards(newGame.getRandomCard(1));
-                                System.out.println("Your cards: " + User.getCurrentCards());
-                                System.out.println("Your hand: " + User.getHandTotal());
-                                if ((User.getHandTotal() > 21)) {
+                                player1.setCurrentCards(casino.getRandomCard());
+                                System.out.println("Your cards: " + player1.getCurrentCards());
+                                System.out.println("Your hand: " + player1.getHandTotal());
+                                if ((player1.getHandTotal() > 21)) {
                                     System.out.println("You've busted mate..Maybe you'll have better luck at the ponies");
                                     System.out.println("####################################################################\n");
                                     gambling = false;
-                                } else if (User.getHandTotal() == 21) {
-                                    System.out.println("BLACKJACK!!!! ");
+                                } else if (player1.getHandTotal() == 21) {
+                                    System.out.println("casino!!!! ");
                                     gambling = false;
                                 }
                             } else if (input.equals("no")) {
-                                while (Dealer.getHandTotal() < 17) {
-                                    Dealer.setCurrentCards(newGame.getRandomCard(1));
+                                //If player stays, dealer hits while < 17
+                                while (dealer.getHandTotal() < 17) {
+                                    dealer.setCurrentCards(casino.getRandomCard());
                                 }
-//                            System.out.println("\nYour hand: " + User.getCurrentCards());
-                                System.out.println("Your total: " + User.getHandTotal());
-                                System.out.println("################################");
-//                            System.out.println("\nDealers hand: " + Dealer.getCurrentCards());
-                                System.out.println("Dealer total: \n" + Dealer.getHandTotal());
-
-                                boolean winner = Dealer.getHandTotal() < User.getHandTotal();
-                                if (winner || (Dealer.getHandTotal() >= 21))
-                                    System.out.println("\nYOU WINNNNNN!!!");
+                                System.out.println("Your total: " + player1.getHandTotal());
+                                System.out.println("dealer total: " + dealer.getHandTotal());
+                                //If dealer busts || player1 has greater hand
+                                if (dealer.getHandTotal() > 21)
+                                    System.out.println("\ndealer busted!!");
+                                else if (dealer.getHandTotal() < player1.getHandTotal())
+                                    System.out.println("\nYou win!");
                                 else
-                                    System.out.println("\nDealer took ya for a ride! YA got no ♥...probably...cuz ya lost");
+                                    System.out.println("\ndealer wins!");
+                                System.out.println("################################");
                                 gambling = false;
                             }
                         } while (gambling);
