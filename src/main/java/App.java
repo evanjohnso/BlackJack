@@ -16,7 +16,7 @@ public class App {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("\nWelcome to BlackJack!\n");
         try {
-            System.out.println("Buy in is 500, limit 10k. Throw down what you will. How much?");
+            System.out.println("Buy in: $500, limit 10k. Throw down what you will.");
             long startCash = Long.parseLong(bufferedReader.readLine());
             if (startCash > 10001 || startCash < 500) {
                 System.out.println("Please adhere to the buy in.");
@@ -36,6 +36,7 @@ public class App {
 //                if (!"cashIn".equals(response)) {
                 if ("yes".equals(response)) {
                     System.out.println("Gotta pay to play, hombre. Place bet:");
+                    //Check to see if the bet amount is available in their current balance
                     long bet = Long.parseLong(bufferedReader.readLine());
 
                     //Create new deck with fresh hands
@@ -96,10 +97,10 @@ public class App {
                                     System.out.println("\nDealer busted!!");
                                     player1.wonRound(bet);
                                 } else if (dealer.getHandTotal() < player1.getHandTotal()) {
-                                    System.out.println("\nYou win!");
+                                    System.out.println("\nYou beat the dealer!");
                                     player1.wonRound(bet);
                                 } else {
-                                    System.out.println("\nDealer wins!");
+                                    System.out.println("\nSorry friend, dealer wins!");
                                     player1.lostRound(bet);
                                 }
                                 System.out.println("################################");

@@ -11,6 +11,7 @@ public class Card {
         return value;
     }
     private int value;
+    public String getNumber() {return number;}
 
     public Card(String number, String suit, int value) {
         this.number = number;

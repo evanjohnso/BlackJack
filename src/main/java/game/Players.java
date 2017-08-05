@@ -34,6 +34,11 @@ public class Players {
         int aces = 0;
         for (int i = 0; i < currentCards.size(); i++) {
             int thisValue = currentCards.get(i).getValue();
+            //Refactor ace value
+//            String findAce = currentCards.get(i).getNumber();
+//            if (findAce.equals("Ace") && handTotal > 21) {
+//
+//            }
 
             if(thisValue == 1){
                 handTotal += 11;
@@ -47,6 +52,7 @@ public class Players {
         }
         return handTotal;
     }
+
     public String getCurrentCards() {
         return currentCards.toString();
     }
