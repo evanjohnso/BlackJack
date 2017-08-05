@@ -11,8 +11,8 @@ public class Players {
     private int handTotal = 0;
     private long bankAccount = 0;
 
-    public Players (Card newCard) {
-        this.currentCards.add(newCard);
+    public Players (long buyIn) {
+        this.bankAccount = buyIn;
     }
 
     //Setters
@@ -22,9 +22,12 @@ public class Players {
     public void setHandTotal(int handTotal) {
         this.handTotal = handTotal;
     }
-    public void setBankAccount(int bankAccount) {
+    public void setBankAccount(long bankAccount) {
         this.bankAccount = bankAccount;
     }
+    public void wonRound(long bet) {this.bankAccount += bet;}
+    public void lostRound(long bet) {this.bankAccount -= bet;}
+    public void resetHand() {this.currentCards.clear();}
     //Getters
     public int getHandTotal() {
         handTotal = 0;
