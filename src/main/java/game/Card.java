@@ -23,19 +23,3 @@ public class Card {
         return (number +" of "+suit);
 
     }
-//
-//    public void toStrings() {
-//        System.out.println( (number +" of " + suit) );
-//    }
-}
-
-
-
-//for (int i = 0; i < 10; i ++) {
-//        Character letter = values[i].charAt(0);
-//        cardValues.put(letter, (1 + i));
-//        }
-//        for (int j = 9; j < 13; j++) {
-//        Character letter = values[j].charAt(0);
-//        cardValues.put(letter, 10);
-//        }
