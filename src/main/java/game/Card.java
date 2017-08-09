@@ -10,16 +10,22 @@ public class Card {
     public int getValue() {
         return value;
     }
+
     private int value;
-    public String getNumber() {return number;}
+
+    public String getNumber() {
+        return number;
+    }
 
     public Card(String number, String suit, int value) {
         this.number = number;
         this.suit = suit;
         this.value = value;
     }
+
     @Override
     public String toString() {
-        return (number +" of "+suit);
+        return (number + " of " + suit);
 
     }
+}

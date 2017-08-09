@@ -31,11 +31,19 @@ public class Players {
     //Getters
     public int getHandTotal() {
         handTotal = 0;
+        int aces = 0;
         for (int i = 0; i < currentCards.size(); i++) {
             int thisValue = currentCards.get(i).getValue();
-            handTotal += thisValue;
-            if (handTotal > 21 && thisValue == 11)
-                handTotal -= 10;
+
+            if(thisValue == 1){
+                handTotal += 11;
+                aces++;
+            } else{
+                handTotal += thisValue;
+            }
+        } while(handTotal > 21 && aces > 0){
+            handTotal -=10;
+            aces --;
         }
         return handTotal;
     }

@@ -9,7 +9,7 @@ import java.util.*;
 public class BlackJack {
     private String[] suits = {"♠","♣","♥","♦"};
     private String[] values = {"Ace", "2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
-    private Integer[] scoreValue = {11,2,3,4,5,6,7,8,9,10,10,10,10};
+    private Integer[] scoreValue = {1,2,3,4,5,6,7,8,9,10,10,10,10};
     private int cardsLeft;
     private List<Card> deck = new ArrayList<Card>();
     Random cardNum = new Random();
