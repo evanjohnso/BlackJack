@@ -6,12 +6,12 @@ import java.util.List;
 /**
  * Created by Guest on 8/3/17.
  */
-public class Players {
+public class Player {
     private List<Card> currentCards = new ArrayList<Card>();
     private int handTotal = 0;
     private long bankAccount = 0;
 
-    public Players (long buyIn) {
+    public Player(long buyIn) {
         this.bankAccount = buyIn;
     }
 

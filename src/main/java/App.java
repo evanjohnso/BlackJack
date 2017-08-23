@@ -1,12 +1,10 @@
 import game.BlackJack;
 import game.Card;
-import game.Players;
+import game.Player;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.management.BufferPoolMXBean;
-import java.util.List;
 
 /**
  * Created by Guest on 8/3/17.
@@ -23,7 +21,7 @@ public class App {
 
             }
             //Instantiate player1 with cash
-            Players player1 = new Players(startCash);
+            Player player1 = new Player(startCash);
             boolean blackjack = true;
             boolean playing = true;
             do {
@@ -53,7 +51,7 @@ public class App {
                     //Dealer Gets two
                     Card dealerCard = casino.getRandomCard();
                     Card dealerCard2 = casino.getRandomCard();
-                    Players dealer = new Players(0);
+                    Player dealer = new Player(0);
                     dealer.setCurrentCards(dealerCard);
                     dealer.setCurrentCards(dealerCard2);
                     System.out.println("\n################################\n");
