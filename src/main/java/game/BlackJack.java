@@ -7,8 +7,8 @@ import java.util.*;
  * Created by Guest on 8/3/17.
  */
 public class BlackJack {
-    private String[] suits = {"♠","♣","♥","♦"};
-    private String[] values = {"Ace", "2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
+    private String[] suits = {"s","c","h","d"};
+    private String[] values = {"01", "02","03","04","05","06","07","08","09","10","11","12","13"};
     private Integer[] scoreValue = {1,2,3,4,5,6,7,8,9,10,10,10,10};
     private int cardsLeft;
     private List<Card> deck = new ArrayList<Card>();
